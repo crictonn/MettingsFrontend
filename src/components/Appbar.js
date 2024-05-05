@@ -8,12 +8,10 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
+import Groups2Icon from '@mui/icons-material/Groups2';
 import {deepOrange} from "@mui/material/colors";
-import {ButtonGroup} from "@mui/material";
 
 function Appbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -49,7 +47,7 @@ function Appbar() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <FlightTakeoffIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <Groups2Icon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -65,7 +63,7 @@ function Appbar() {
                             textDecoration: 'none',
                         }}
                     >
-                        TransPorter
+                        GatherHub
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', mt: 0 } }}>
@@ -112,7 +110,7 @@ function Appbar() {
                             }
                         </Menu>
                     </Box>
-                    <FlightTakeoffIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <Groups2Icon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -128,50 +126,50 @@ function Appbar() {
                             textDecoration: 'none',
                         }}
                     >
-                        TransPorter
+                        GatherHub
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            <Button
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, ml: 3, color: 'white', display: 'block' }}
-                                href="http://localhost:3000/createOrder"
-                            >
-                                Заказать перевозку
-                            </Button>
-                        {
-                            localStorage.getItem("role") === 'ADMIN' ?
-                                <ButtonGroup>
-                                    <Button
-                                        onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, ml: 3, color: 'white', display: 'block' }}
-                                        href="http://localhost:3000/companies"
-                                    >
-                                        Компании
-                                    </Button>
+                        {/*    <Button*/}
+                        {/*        onClick={handleCloseNavMenu}*/}
+                        {/*        sx={{ my: 2, ml: 3, color: 'white', display: 'block' }}*/}
+                        {/*        href="http://localhost:3000/createOrder"*/}
+                        {/*    >*/}
+                        {/*        Заказать перевозку*/}
+                        {/*    </Button>*/}
+                        {/*{*/}
+                        {/*    localStorage.getItem("role") === 'ADMIN' ?*/}
+                        {/*        <ButtonGroup>*/}
+                        {/*            <Button*/}
+                        {/*                onClick={handleCloseNavMenu}*/}
+                        {/*                sx={{ my: 2, ml: 3, color: 'white', display: 'block' }}*/}
+                        {/*                href="http://localhost:3000/companies"*/}
+                        {/*            >*/}
+                        {/*                Компании*/}
+                        {/*            </Button>*/}
 
-                                    <Button
-                                        onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, ml: 3, color: 'white', display: 'block' }}
-                                        href="http://localhost:3000/users"
-                                    >
-                                        Пользователи
-                                    </Button>
-                                </ButtonGroup>
-                                :
-                                <div/>
-                        }
-                        {
-                            localStorage.getItem("role") === 'EMPLOYEE' ?
-                                <Button
-                                    onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, ml: 3, color: 'white', display: 'block' }}
-                                    href="http://localhost:3000/orders"
-                                >
-                                    Все заказы
-                                </Button>
-                            :
-                            <div/>
-                        }
+                        {/*            <Button*/}
+                        {/*                onClick={handleCloseNavMenu}*/}
+                        {/*                sx={{ my: 2, ml: 3, color: 'white', display: 'block' }}*/}
+                        {/*                href="http://localhost:3000/users"*/}
+                        {/*            >*/}
+                        {/*                Пользователи*/}
+                        {/*            </Button>*/}
+                        {/*        </ButtonGroup>*/}
+                        {/*        :*/}
+                        {/*        <div/>*/}
+                        {/*}*/}
+                        {/*{*/}
+                        {/*    localStorage.getItem("role") === 'EMPLOYEE' ?*/}
+                        {/*        <Button*/}
+                        {/*            onClick={handleCloseNavMenu}*/}
+                        {/*            sx={{ my: 2, ml: 3, color: 'white', display: 'block' }}*/}
+                        {/*            href="http://localhost:3000/orders"*/}
+                        {/*        >*/}
+                        {/*            Все заказы*/}
+                        {/*        </Button>*/}
+                        {/*    :*/}
+                        {/*    <div/>*/}
+                        {/*}*/}
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>

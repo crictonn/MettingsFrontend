@@ -1,6 +1,8 @@
-import SignUp from "../../../WebstormProjects/meetings/src/pages/SignUp";
-import SignIn from "../../../WebstormProjects/meetings/src/pages/SignIn";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 import Landing from "./pages/Landing";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 
 
 
@@ -36,16 +38,16 @@ export const publicRoutes = [
         path: "/login",
         Component: SignIn
     },
-    // {
-    //     path: "/home",
-    //     Component: Home
-    // },
+    {
+        path: "/home",
+        Component: Home
+    },
     // {
     //     path: "/createOrder",
     //     Component: CreateOrder
     // },
-    // {
-    //     path: "/account",
-    //     Component: Profile
-    // }
+    {
+        path: "/account",
+        Component: Profile
+    }
 ]
