@@ -5,9 +5,12 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import {Col, Row, Card, CardBody} from 'react-bootstrap'
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {Paper} from "@mui/material";
+import {ButtonGroup, CardHeader, Paper} from "@mui/material";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
 
 
 export default function Meetings() {
@@ -22,7 +25,7 @@ export default function Meetings() {
     const [meetings, setMeetings] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:8080/meetings",{ //TODO Поменять линк
+        fetch("http://localhost:8080/meetings",{
             method: "GET",
             headers: {
                 "content-type": "application/json",
@@ -36,50 +39,50 @@ export default function Meetings() {
 
     }, []);
 
-    const rows = []
+    const handleClick = (meeting) =>{
+        navigate(`/meeting/${meeting.id}`, {state: {meeting}});
+    };
 
-    const columns = [
-        {field: 'id', headerName: 'ID', width: 50},
-        { field: 'orderName', headerName: 'Название', width: 120 },
-        { field: 'regDate', headerName: 'Дата заказа', type: "Date", width: 120 },
-        { field: 'arrivalDate', headerName: 'Расчетная дата прибытия', type: "Date", width: 190 },
-        { field: 'departurePoint', headerName: 'Точка отправки', width: 140 },
-        { field: 'destinationPoint', headerName: 'Пункт назначения', width: 150 },
-        { field: 'status', headerName: 'Статус', width: 100 },
-        { field: 'price', headerName: 'Цена', width: 100 },
-        { field: 'fragile', headerName: 'Хрупкий', type: 'Boolean', width: 70},
-        { field: 'dangerous', headerName: 'Опасный', type: 'Boolean', width: 70}
-    ];
 
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Название встречи</TableCell>
-                        <TableCell align="right">Место</TableCell>
-                        <TableCell align="right">Дата</TableCell>
-                        <TableCell align="right">Организатор</TableCell>
-                        <TableCell align="right">Описание</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {meetings.map((meeting) => (
-                        <TableRow
-                            key={meeting.name}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell component="th" scope="row">
-                                {meeting.name}
-                            </TableCell>
-                            <TableCell align="right">{meeting.place}</TableCell>
-                            <TableCell align="right">{meeting.date}</TableCell>
-                            <TableCell align="right">{meeting.owner}</TableCell>
-                            <TableCell align="right">{meeting.description}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <Grid container spacing={2}>
+            <Grid item xs={12}>
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Название встречи</TableCell>
+                                <TableCell align="left">Дата</TableCell>
+                                <TableCell align="left">Описание</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {meetings.map((meeting) => (
+                                <TableRow
+                                    key={meeting.name}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+
+                                    <TableCell component="th" scope="row" onClick={() => handleClick(meeting)}>
+                                        {meeting.name}
+                                    </TableCell>
+                                    <TableCell align="left">{meeting.date}</TableCell>
+                                    <TableCell align="left">{meeting.description}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+
+                </TableContainer>
+            </Grid>
+            <Grid item xs={12}>
+                <Button variant="contained" color="success" sx={{mt:1}} href={"http://localhost:3000/meeting/new"}>
+                    Создать встречу
+                </Button>
+                <Button variant="contained" color="success" sx={{mt:1, ml:2}} href={"http://localhost:3000/location/new"}>
+                    Создать место
+                </Button>
+            </Grid>
+        </Grid>
     );
 }
